@@ -5,6 +5,7 @@ class Pelota {
         this.velX = 0;
         this.velY = 0;
         this.accY = 0;
+        this.factorReb = 0;
         e.style.width = e.style.height = `${dia}px`;
     }
     getY() {
@@ -21,10 +22,18 @@ class Pelota {
     }
     move() {
         this.velY += this.accY;
+        let novY = this.getY() + this.velY;
         this.setX(this.getX() + this.velX);
-        this.setY(this.getY() + this.velY);
+        if(Math.floor(novY) > 0) {
+            this.setY(this.getY() + this.velY);
+        }
+        else {
+            this.setY(0);
+            this.velY *= -this.factorReb;
+        }
     }
     reset() {
+        this.factorReb = 0.5;
         this.velX = 0.5;
         this.accY = -.098 / 2;
         this.velY = 0;
