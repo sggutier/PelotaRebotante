@@ -56,6 +56,10 @@ function iniciar() {
     temporizador = setInterval(tiempo, 10);
 }
 
+function pausar() {
+    parar();
+    temporizador = temporizador? null : clearInterval(temporizador);
+}
 
 function parar() {
     clearInterval(temporizador);
@@ -63,3 +67,4 @@ function parar() {
 
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
+document.querySelector('#botPausar').addEventListener('click', pausar);
