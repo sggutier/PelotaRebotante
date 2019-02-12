@@ -11,20 +11,31 @@
         </header>
 
         <main>
-            <div class="controles">            
-                <button id="botIniciar">(Re)Iniciar</button>
-                <button id="botPausar"">Pausar</button>
-                <button id="botParar"">Parar</button>
-            </span>
-            
-            <div id="pelota"></div>
-            <div id="demo"></div>
+            <div class="controles">
+                <span>
+                    <button id="botIniciar">(Re)Iniciar</button>
+                    <button id="botPausar"">Pausar</button>
+                    <button id="botParar"">Parar</button>
+                </span>
+                
+                <br>
+                <label>Gravedad</label>
+                <input id="inGrav" type="number" value="9.81" min="0" step="0.01">
+                <br>
+                <label>Rebote</label>
+                <input id="inReb" type="number" value="0.80" min="0" step="0.01">
+                <br>
+                <label>Velocidad en X</label>
+                <input id="inVel" type="number" value="100.00" min="0" step="0.01">
+            </div>
 
-        </main>        
+            <div id="pelota"></div>
+
+        </main>
 
         <footer>
         </footer>
-        
+
     </body>
 </html>
 

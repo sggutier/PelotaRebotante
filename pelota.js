@@ -53,16 +53,25 @@ var temporizador = null;
 function iniciar() {
     parar();
     pelota.reset();
+    pelota.accY = -parseFloat(document.querySelector('#inGrav').value) / 100;
+    pelota.factorReb = parseFloat(document.querySelector('#inReb').value);
+    pelota.velX = parseFloat(document.querySelector('#inVel').value) / 100;
     temporizador = setInterval(tiempo, 10);
 }
 
 function pausar() {
-    parar();
-    temporizador = temporizador? null : clearInterval(temporizador);
+    if(temporizador) {
+        parar();
+        temporizador = null;
+    }
+    else {
+        temporizador = setInterval(tiempo, 10);
+    }
 }
 
 function parar() {
     clearInterval(temporizador);
+    pelota.reset();
 }
 
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
