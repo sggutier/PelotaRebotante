@@ -24,21 +24,33 @@ class Pelota {
         this.setX(this.getX() + this.velX);
         this.setY(this.getY() + this.velY);
     }
+    reset() {
+        this.velX = 0.5;
+        this.accY = -.098 / 2;
+        this.velY = 0;
+        this.setX(0);
+        this.setY(window.innerHeight - this.diametro);
+    }
 }
 
 const pelota = new Pelota(document.querySelector('#pelota'), 30);
 
 function tiempo() {    
-    po.move();
+    pelota.move();
 } 
-
-// po.velX = 0.5;
-// po.accY = -.098 / 2;
 
 var temporizador = null;
 
 function iniciar() {
-    setInterval(tiempo, 10);
+    parar();
+    pelota.reset();
+    temporizador = setInterval(tiempo, 10);
 }
 
 
+function parar() {
+    clearInterval(temporizador);
+}
+
+document.querySelector('#botIniciar').addEventListener('click', iniciar);
+document.querySelector('#botParar').addEventListener('click', parar);
