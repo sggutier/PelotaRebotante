@@ -23,17 +23,17 @@ class Pelota {
     move() {
         this.velY += this.accY;
         let novY = this.getY() + this.velY;
-        this.setX(this.getX() + this.velX);
-        if(Math.floor(novY) > 0) {
+        let novX = this.getX() + this.velX;
+        this.setX(Math.min(novX, window.innerWidth - this.diametro));
+        if(Math.floor(novY) > 0)
             this.setY(this.getY() + this.velY);
-        }
         else {
             this.setY(0);
             this.velY *= -this.factorReb;
         }
     }
     reset() {
-        this.factorReb = 0.5;
+        this.factorReb = 0.85;
         this.velX = 0.5;
         this.accY = -.098 / 2;
         this.velY = 0;
