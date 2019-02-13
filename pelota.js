@@ -28,7 +28,7 @@ class Pelota {
         if(Math.floor(novY) > 0)
             this.setY(this.getY() + this.velY);
         else {
-            this.setY(0);
+            this.setY(Math.abs(novY));
             this.velY *= -this.factorReb;
         }
     }
