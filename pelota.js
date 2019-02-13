@@ -44,9 +44,9 @@ class Pelota {
 
 const pelota = new Pelota(document.querySelector('#pelota'), 30);
 
-function tiempo() {    
+function tiempo() {
     pelota.move();
-} 
+}
 
 var temporizador = null;
 
