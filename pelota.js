@@ -61,7 +61,7 @@ function iniciar() {
 
 function pausar() {
     if(temporizador) {
-        parar();
+        clearInterval(temporizador);
         temporizador = null;
     }
     else {
