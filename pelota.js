@@ -41,21 +41,30 @@ class Pelota {
     }
 }
 
+
+
 const pelota = new Pelota(document.querySelector('#pelota'), 30);
+const inGrav = document.getElementById('inGrav');
+const inReb = document.getElementById('inReb');
+const inVel = document.getElementById('inVel');
+var temporizador = null;
 
 function tiempo() {
     pelota.move();
 }
 
-var temporizador = null;
+function setCamposActivados(stat) {
+    document.querySelectorAll('.campo').forEach(x => x.disabled = !stat);
+}
 
 function iniciar() {
     parar();
     pelota.reset();
-    pelota.accY = -parseFloat(document.querySelector('#inGrav').value) / 100;
-    pelota.factorReb = parseFloat(document.querySelector('#inReb').value);
-    pelota.velX = parseFloat(document.querySelector('#inVel').value) / 100;
+    pelota.accY = -parseFloat(inGrav.value) / 100;
+    pelota.factorReb = parseFloat(inReb.value);
+    pelota.velX = parseFloat(inVel.value) / 100;
     temporizador = setInterval(tiempo, 10);
+    setCamposActivados(false);
 }
 
 function pausar() {
@@ -71,24 +80,18 @@ function pausar() {
 function parar() {
     clearInterval(temporizador);
     pelota.reset();
+    setCamposActivados(true);
 }
 
 function cambia(src){
-    document.getElementById("pelota").src=src
+    pelota.elem.src=`img/${src}.png`;
 }
 
-function updateTextInputGrav(val) {
-    document.getElementById('inGrav').value=val;
-}
-
-function updateTextInputReb(val) {
-    document.getElementById('inReb').value=val;
-}
-
-function updateTextInputVel(val) {
-    document.getElementById('inVel').value=val;
+function updateInput(id, val) {
+    document.querySelector(`#${id}`).value = val;
 }
 
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
+cambia("futbol");
