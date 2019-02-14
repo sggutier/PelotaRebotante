@@ -2,23 +2,22 @@ class Pelota {
     constructor(e, dia) {
         this.elem = e;
         this.diametro = dia;
-        this.velX = 0;
-        this.velY = 0;
-        this.accY = 0;
-        this.factorReb = 0;
+        this.factorReb = this.accY = this.x = this.y = this.velX = this.velY = 0;
         e.style.width = e.style.height = `${dia}px`;
     }
     getY() {
-        return window.innerHeight - this.elem.offsetTop - this.diametro;
+        return this.y;
     }
     setY(y) {
-        return this.elem.style.bottom = `${y}px`;
+        this.y = y;
+        return this.elem.style.bottom = `${Math.round(y)}px`;
     }
     getX() {
-        return this.elem.offsetLeft;
+        return this.x;
     }
     setX(x) {
-        return this.elem.style.left = `${x}px`;
+        this.x = x;
+        return this.elem.style.left = `${Math.round(x)}px`;
     }
     move() {
         this.velY += this.accY;
@@ -75,19 +74,19 @@ function parar() {
 }
 
 function cambia(src){
- document.getElementById("pelota").src=src
+    document.getElementById("pelota").src=src
 }
 
 function updateTextInputGrav(val) {
-  document.getElementById('inGrav').value=val;
+    document.getElementById('inGrav').value=val;
 }
 
 function updateTextInputReb(val) {
-  document.getElementById('inReb').value=val;
+    document.getElementById('inReb').value=val;
 }
 
 function updateTextInputVel(val) {
-  document.getElementById('inVel').value=val;
+    document.getElementById('inVel').value=val;
 }
 
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
