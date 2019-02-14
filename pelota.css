@@ -1,11 +1,41 @@
+body{
+  background-color: #008040;
+}
+
 #pelota {
-    display: block;
-    position: absolute;
+    /*display: block;
     background-color: red;
-    border-radius: 50%;
+    border-radius: 50%;*/
+    position: absolute;
+    width: 120px;
+    height: 250px;
 }
 
 .controles {
+    color: #DDDC1C;
+    text-align: center;
     float: right;
-    margin-right: 15px;
+    padding: 10px;
+    border: 20px solid #F68A1E;
+    border-radius: 10px;
+    background-color: #213E57;
+    font-family: Helvetica;
+}
+
+.boton{
+  padding: 5px;
+  background-color: #1883ba;
+  border-radius: 6px;
+  border: 2px solid #0016b0;
+}
+
+.boton:hover{
+    color: #black;
+    background-color: #4267B2;
+  }
+
+.campo{
+  border-radius: 5px;
+  background-color: #DDDDDD;
+  border: 1px solid #39c;
 }
