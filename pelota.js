@@ -19,6 +19,10 @@ class Pelota {
         this.x = x;
         return this.elem.style.left = `${Math.round(x)}px`;
     }
+    setDiam(x) {
+        this.diametro = x;
+        this.elem.style.width = this.elem.style.height = `${x}px`;
+    }
     move() {
         this.velY += this.accY;
         let novY = this.getY() + this.velY;
@@ -41,13 +45,25 @@ class Pelota {
     }
 }
 
-
+class ConfigPelota {
+    constructor(diam, reb) {
+        this.diam = diam;
+        this.reb = reb;
+    }
+}
 
 const pelota = new Pelota(document.querySelector('#pelota'), 30);
 const inGrav = document.getElementById('inGrav');
 const inReb = document.getElementById('inReb');
 const inVel = document.getElementById('inVel');
 var temporizador = null;
+configs = {
+    "futbol" : new ConfigPelota(30, 0.85),
+    "baloncesto" : new ConfigPelota(40, 0.85),
+    "beisbol" : new ConfigPelota(15, 0.3),
+    "tenis" : new ConfigPelota(10, 0.85),
+    "mesa" : new ConfigPelota(10, 0.85)
+};
 
 function tiempo() {
     pelota.move();
@@ -85,6 +101,11 @@ function parar() {
 
 function cambia(src){
     pelota.elem.src=`img/${src}.png`;
+    cfg = configs[src];
+    pelota.setDiam(cfg['diam']);
+    inReb.value = cfg['reb'];
+    console.log(cfg);
+    pelota.reset();
 }
 
 function updateInput(id, val) {
