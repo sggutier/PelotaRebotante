@@ -9,33 +9,43 @@
     <body>
         <header>
         </header>
-
         <main>
             <div class="controles">
                 <span>
-                    <button id="botIniciar">(Re)Iniciar</button>
-                    <button id="botPausar"">Pausar</button>
-                    <button id="botParar"">Parar</button>
+                    <button id="botIniciar" class="boton">(Re)Iniciar</button>
+                    <button id="botPausar" class="boton">Pausar</button>
+                    <button id="botParar" class="boton">Parar</button>
+
                 </span>
-
-                <br>
+                <hr>
                 <label>Gravedad</label>
-                <input id="inGrav" type="number" value="9.81" min="0" step="0.01">
-                <br>
+                <input id="gravedad" type="range" min="0" value="9.81" step="0.01" onchange="updateTextInputGrav(this.value);">
+                <input type="text" id="inGrav" value="9.81" size="4" class="campo">
+                <!--input id="inGrav" class="campo" type="number" value="9.81" min="0" step="0.01"-->
+                <br><br>
                 <label>Rebote</label>
-                <input id="inReb" type="number" value="0.85" min="0" step="0.01">
-                <br>
+                <input id="rebote" type="range" min="0" max="2" value="0.85" step="0.01" onchange="updateTextInputReb(this.value);">
+                <input type="text" id="inReb" value="0.85" size="4" class="campo">
+                <!--input id="inReb" class="campo"type="number" value="0.85" min="0" step="0.01"-->
+                <br><br>
                 <label>Velocidad en X</label>
-                <input id="inVel" type="number" value="100.00" min="0" step="0.01">
+                <input id="velocidad" type="range" min="0" max="1000" value="100.00" step="0.01" onchange="updateTextInputVel(this.value);">
+                <input type="text" id="inVel" value="100.00" size="4" class="campo">
+                <!--input id="inVel" class="campo"type="number" value="100.00" min="0" step="0.01"-->
+                <br><br>
+                <label>Pelota</label>
+    <select onchange="cambia(this.options[this.selectedIndex].value)" class="campo">
+          <option value="img/futbol.png">Fútbol</option>
+          <option value="img/baloncesto.png">Baloncesto</option>
+          <option value="img/beisbol.png">Béisbol</option>
+          <option value="img/tenis.png">Tenis</option>
+          <option value="img/mesa.png">Tenis de mesa</option>
+    </select>
             </div>
-
-            <div id="pelota"></div>
-
+            <img id="pelota" src="img/futbol.png" />
         </main>
-
         <footer>
         </footer>
-
     </body>
 </html>
 

@@ -74,6 +74,22 @@ function parar() {
     pelota.reset();
 }
 
+function cambia(src){
+ document.getElementById("pelota").src=src
+}
+
+function updateTextInputGrav(val) {
+  document.getElementById('inGrav').value=val;
+}
+
+function updateTextInputReb(val) {
+  document.getElementById('inReb').value=val;
+}
+
+function updateTextInputVel(val) {
+  document.getElementById('inVel').value=val;
+}
+
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
