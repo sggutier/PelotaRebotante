@@ -58,11 +58,11 @@ const inReb = document.getElementById('inReb');
 const inVel = document.getElementById('inVel');
 var temporizador = null;
 configs = {
-    "futbol" : new ConfigPelota(30, 0.85),
-    "baloncesto" : new ConfigPelota(40, 0.85),
-    "beisbol" : new ConfigPelota(15, 0.3),
-    "tenis" : new ConfigPelota(10, 0.85),
-    "mesa" : new ConfigPelota(10, 0.85)
+    "futbol" : new ConfigPelota(40, 0.6),
+    "baloncesto" : new ConfigPelota(45, 0.75),
+    "beisbol" : new ConfigPelota(20, 0.3),
+    "tenis" : new ConfigPelota(25, 0.9),
+    "mesa" : new ConfigPelota(10, 0.8)
 };
 
 function tiempo() {
