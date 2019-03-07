@@ -104,7 +104,6 @@ function cambia(src){
     cfg = configs[src];
     pelota.setDiam(cfg['diam']);
     inReb.value = cfg['reb'];
-    console.log(cfg);
     pelota.reset();
 }
 
@@ -116,3 +115,4 @@ document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
 cambia("futbol");
+
