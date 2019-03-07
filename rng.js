@@ -1,6 +1,6 @@
 class RNG_comix {
     constructor(x0, a, c, m, fin=null) {
-        this.x = x0;
+        this.x = x0 % m;
         this.a = a;
         this.c = c;
         if(fin==null) {

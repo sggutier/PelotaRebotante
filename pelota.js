@@ -1,3 +1,6 @@
+let rngNum = new RNG_comix(Date.now(), 1664525, 1013904223, Math.pow(2, 32));
+let rngUnif = new RNG_comix01(Date.now(), 1664525, 1013904223, 32);
+
 class Pelota {
     constructor(e, dia) {
         this.elem = e;
@@ -52,11 +55,13 @@ class ConfigPelota {
     }
 }
 
+const listaP = document.getElementById('listaPels')
 const pelota = new Pelota(document.querySelector('#pelota'), 30);
 const inGrav = document.getElementById('inGrav');
 const inReb = document.getElementById('inReb');
 const inVel = document.getElementById('inVel');
 var temporizador = null;
+nomsPels = ["futbol", "baloncesto", "beisbol", "tenis", "mesa"]
 configs = {
     "futbol" : new ConfigPelota(30, 0.85),
     "baloncesto" : new ConfigPelota(40, 0.85),
@@ -101,6 +106,7 @@ function parar() {
 
 function cambia(src){
     pelota.elem.src=`img/${src}.png`;
+    listaP.value = src;
     cfg = configs[src];
     pelota.setDiam(cfg['diam']);
     inReb.value = cfg['reb'];
@@ -114,5 +120,5 @@ function updateInput(id, val) {
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
-cambia("futbol");
 
+cambia(nomsPels[rngNum.random()%5]);
