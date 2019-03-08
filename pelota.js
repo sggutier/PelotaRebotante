@@ -39,7 +39,6 @@ class Pelota {
         }
     }
     reset() {
-        this.factorReb = 0.85;
         this.velX = 0.5;
         this.accY = -.098 / 2;
         this.velY = 0;
@@ -55,11 +54,7 @@ class ConfigPelota {
     }
 }
 
-const listaP = document.getElementById('listaPels')
 const pelota = new Pelota(document.querySelector('#pelota'), 30);
-const inGrav = document.getElementById('inGrav');
-const inReb = document.getElementById('inReb');
-const inVel = document.getElementById('inVel');
 var temporizador = null;
 nomsPels = ["futbol", "baloncesto", "beisbol", "tenis", "mesa"]
 configs = {
@@ -81,9 +76,8 @@ function setCamposActivados(stat) {
 function iniciar() {
     parar();
     pelota.reset();
-    pelota.accY = -parseFloat(inGrav.value) / 100;
-    pelota.factorReb = parseFloat(inReb.value);
-    pelota.velX = parseFloat(inVel.value) / 100;
+    pelota.accY = -9.8 / 100;
+    pelota.velX = (rngUnif.random()*400 + 100) / 100;
     temporizador = setInterval(tiempo, 10);
     setCamposActivados(false);
 }
@@ -104,12 +98,11 @@ function parar() {
     setCamposActivados(true);
 }
 
-function cambia(src){
+function cambia(pelota, src){
     pelota.elem.src=`img/${src}.png`;
-    listaP.value = src;
     cfg = configs[src];
     pelota.setDiam(cfg['diam']);
-    inReb.value = cfg['reb'];
+    pelota.factorReb = cfg['reb'];
     pelota.reset();
 }
 
@@ -121,4 +114,4 @@ document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
 
-cambia(nomsPels[rngNum.random()%5]);
+cambia(pelota, nomsPels[rngNum.random()%5]);

@@ -15,32 +15,7 @@
                     <button id="botIniciar" class="boton">(Re)Iniciar</button>
                     <button id="botPausar" class="boton">Pausar</button>
                     <button id="botParar" class="boton">Parar</button>
-
-                </span>
-                <hr>
-                <label>Gravedad</label>
-                <input id="gravedad" type="range" min="0" value="9.81" step="0.01" onchange="updateInput('inGrav', this.value);" class="campo">
-                <input type="number" id="inGrav" min="0" value="9.81" step="0.01" size="4" onchange="updateInput('gravedad', this.value);" class="campo" style="width:4.5em">
-
-                <br><br>
-                <label>Rebote</label>
-                <input id="rebote" type="range" min="0" max="2" value="0.85" step="0.01" onchange="updateInput('inReb', this.value);" class="campo">
-                <input type="number" id="inReb" min="0" max="2" value="0.85" step="0.01" size="4" onchange="updateInput('rebote', this.value);" class="campo" style="width:3.5em">
-
-                <br><br>
-                <label>Velocidad en X</label>
-                <input id="velocidad" type="range" min="0" max="1000" value="100.00" step="0.01" onchange="updateInput('inVel', this.value);" class="campo">
-                <input type="number" id="inVel" min="0" max="1000" value="100.00" step="0.01" size="4" onchange="updateInput('velocidad', this.value);" class="campo" style="width:4.5em">
-
-                <br><br>
-                <label>Pelota</label>
-                <select id="listaPels" onchange="cambia(this.options[this.selectedIndex].value)" class="campo">
-                    <option value="futbol">Fútbol</option>
-                    <option value="baloncesto">Baloncesto</option>
-                    <option value="beisbol">Béisbol</option>
-                    <option value="tenis">Tenis</option>
-                    <option value="mesa">Tenis de mesa</option>
-                </select>
+                </span>                
             </div>
             <img id="pelota" />
         </main>
