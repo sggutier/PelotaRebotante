@@ -2,7 +2,7 @@ let rngNum = new RNG_comix(Date.now(), 1664525, 1013904223, Math.pow(2, 32));
 let rngUnif = new RNG_comix01(Date.now(), 1664525, 1013904223, 32);
 
 class Pelota {
-    constructor(e, dia) {
+    constructor(e, dia=30) {
         this.elem = e;
         this.diametro = dia;
         this.factorReb = this.accY = this.x = this.y = this.velX = this.velY = 0;
@@ -54,7 +54,9 @@ class ConfigPelota {
     }
 }
 
-const pelota = new Pelota(document.querySelector('#pelota'), 30);
+const docMain = document.querySelector('main');
+const numPs = rngNum.random()%10 + 1;
+var pelotas = [];
 var temporizador = null;
 nomsPels = ["futbol", "baloncesto", "beisbol", "tenis", "mesa"]
 configs = {
@@ -66,7 +68,8 @@ configs = {
 };
 
 function tiempo() {
-    pelota.move();
+    for(let i=0; i<numPs; i++)
+        pelotas[i].move();
 }
 
 function setCamposActivados(stat) {
@@ -75,9 +78,11 @@ function setCamposActivados(stat) {
 
 function iniciar() {
     parar();
-    pelota.reset();
-    pelota.accY = -9.8 / 100;
-    pelota.velX = (rngUnif.random()*400 + 100) / 100;
+    for(let i=0; i<numPs; i++) {
+        pelotas[i].reset();
+        pelotas[i].accY = -9.8 / 100;
+        pelotas[i].velX = (rngUnif.random()*400 + 100) / 100;
+    }
     temporizador = setInterval(tiempo, 10);
     setCamposActivados(false);
 }
@@ -94,7 +99,8 @@ function pausar() {
 
 function parar() {
     clearInterval(temporizador);
-    pelota.reset();
+    for(let i=0; i<numPs; i++)
+        pelotas[i].reset();
     setCamposActivados(true);
 }
 
@@ -114,4 +120,11 @@ document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
 
-cambia(pelota, nomsPels[rngNum.random()%5]);
+for(let i=0; i<numPs; i++) {
+    let p = document.createElement('img');
+    p.classList.add('pelota')
+    docMain.append(p);
+    pelotas.push(new Pelota(p));
+}
+for(let i=0; i<numPs; i++)
+    cambia(pelotas[i], nomsPels[rngNum.random()%5]);
