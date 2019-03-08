@@ -63,11 +63,11 @@ const inVel = document.getElementById('inVel');
 var temporizador = null;
 nomsPels = ["futbol", "baloncesto", "beisbol", "tenis", "mesa"]
 configs = {
-    "futbol" : new ConfigPelota(30, 0.85),
-    "baloncesto" : new ConfigPelota(40, 0.85),
+    "futbol" : new ConfigPelota(30, 0.7),
+    "baloncesto" : new ConfigPelota(40, 0.9),
     "beisbol" : new ConfigPelota(15, 0.3),
-    "tenis" : new ConfigPelota(10, 0.85),
-    "mesa" : new ConfigPelota(10, 0.85)
+    "tenis" : new ConfigPelota(10, 0.6),
+    "mesa" : new ConfigPelota(10, 0.4)
 };
 
 function tiempo() {
