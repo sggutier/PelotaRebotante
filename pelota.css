@@ -32,7 +32,8 @@ body{
 .boton:hover{
     color: #black;
     background-color: #4267B2;
-  }
+}
+
 
 .campo{
   border-radius: 5px;
