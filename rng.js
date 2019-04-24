@@ -47,8 +47,8 @@ class RNG_comix01 {
     }
 }
 
-var rng = new RNG_comix(4, 5, 7, 8);
-var ro = new RNG_comix(4, 137, 7, 1024, 2048);
+// var rng = new RNG_comix(4, 5, 7, 8);
+// var ro = new RNG_comix(4, 137, 7, 1024, 2048);
 
 
 // for(let i=0, pv = rng.random(); i<8; i++) {
@@ -63,7 +63,7 @@ var ro = new RNG_comix(4, 137, 7, 1024, 2048);
 //     pv = w;
 // }
 
-let wo = new RNG_comix01(0, 1664525, 1013904223, 32);
+// let wo = new RNG_comix01(0, 1664525, 1013904223, 32);
 // for(let i=0, pv = wo.random(); i<8; i++) {
 //     let w = wo.random();
 //     console.log({n: i, x_n: pv, x_np1: w});

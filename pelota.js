@@ -68,8 +68,7 @@ configs = {
 };
 
 function tiempo() {
-    for(let i=0; i<numPs; i++)
-        pelotas[i].move();
+    pelotas.forEach(p => p.move());
 }
 
 function setCamposActivados(stat) {
@@ -78,11 +77,11 @@ function setCamposActivados(stat) {
 
 function iniciar() {
     parar();
-    for(let i=0; i<numPs; i++) {
-        pelotas[i].reset();
-        pelotas[i].accY = -9.8 / 100;
-        pelotas[i].velX = (rngUnif.random()*400 + 100) / 100;
-    }
+    pelotas.forEach(p => {
+        p.reset();
+        p.accY = -9.8 / 100;
+        p.velX = (rngUnif.random()*400 + 100) / 100;
+    });
     temporizador = setInterval(tiempo, 10);
     setCamposActivados(false);
 }
@@ -99,8 +98,7 @@ function pausar() {
 
 function parar() {
     clearInterval(temporizador);
-    for(let i=0; i<numPs; i++)
-        pelotas[i].reset();
+    pelotas.forEach(p => p.reset());
     setCamposActivados(true);
 }
 
@@ -116,15 +114,22 @@ function updateInput(id, val) {
     document.querySelector(`#${id}`).value = val;
 }
 
+function creaPelotas(n) {
+    pelotas.forEach(p => docMain.removeChild(p.elem));
+    pelotas = [];
+    parar();
+    for(let i=0; i<n; i++) {
+        let p = document.createElement('img');
+        p.classList.add('pelota')
+        docMain.append(p);
+        pelotas.push(new Pelota(p));
+    }
+    pelotas.forEach(p => cambia(p, nomsPels[rngNum.random()%5]));
+}
+
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
 
-for(let i=0; i<numPs; i++) {
-    let p = document.createElement('img');
-    p.classList.add('pelota')
-    docMain.append(p);
-    pelotas.push(new Pelota(p));
-}
-for(let i=0; i<numPs; i++)
-    cambia(pelotas[i], nomsPels[rngNum.random()%5]);
+creaPelotas(numPs);
+
