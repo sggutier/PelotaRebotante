@@ -86,6 +86,24 @@ function creaPelotasRandom() {
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
+document.querySelector('#botGenera').addEventListener('click', creaPelotasRandom);
 
 creaPelotasRandom();
 
+function cosaNormal(lam, m){
+    creaPelotas(Math.max(0, Math.round(generaDistrNorm(m, lam))));
+}
+
+function cosaPoisson(lam){
+    creaPelotas(Math.max(0, Math.round(generaDistrPoisson(lam))));
+}
+
+function muSi(id) {
+  var element = document.getElementById(id);
+  element.style.visibility = "visible";
+}
+
+function muNo(id) {
+  var element = document.getElementById(id);
+  element.style.visibility = "hidden";
+}
