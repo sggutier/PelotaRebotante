@@ -6,10 +6,13 @@ class ConfigPelota {
 }
 
 const docMain = document.querySelector('main');
+const divsDist = docMain.getElementsByClassName('dist');
 var pelotas = [];
 var temporizador = null;
 var distrFuerzas = generaDistrNorm(300, 150);
 var distrPelotas = generaDistrPoisson(6);
+var genFunc = null;
+const inNormLambda = document.getElementById('inNormLambda');
 nomsPels = ["futbol", "baloncesto", "beisbol", "tenis", "mesa"]
 configs = {
     "futbol" : new ConfigPelota(40, 0.6),
@@ -67,6 +70,7 @@ function updateInput(id, val) {
 }
 
 function creaPelotas(n) {
+    console.log('creando: ' + n);
     pelotas.forEach(p => docMain.removeChild(p.elem));
     pelotas = [];
     parar();
@@ -83,27 +87,39 @@ function creaPelotasRandom() {
     creaPelotas(Math.max(0, Math.round(randomDistr(distrPelotas))));
 }
 
+function cargaVars() {
+    distrPelotas = null;
+    var arr = []
+    var cl = divsDist;
+    var divo;
+    for(var i=0; i<cl.length; i++) {
+        if(cl[i].style.display == 'block') {
+            divo = cl[i];
+            break;
+        }
+    }
+    var inElems = divo.getElementsByTagName('input');
+    for(var i=0; i<inElems.length; i++) {
+        arr.push(parseFloat(inElems[i].value));
+    }
+    distrPelotas = genFunc.apply(null, arr);
+    creaPelotasRandom();
+}
+
+function muestraDistrs(mstr, funco) {
+    var cl = divsDist;
+    genFunc = funco;
+    for(var i=0; i<cl.length; i++) {
+        cl[i].style.display = cl[i].id==mstr? 'block' : 'none';
+    }
+    cargaVars();
+}
+
+
 document.querySelector('#botIniciar').addEventListener('click', iniciar);
 document.querySelector('#botParar').addEventListener('click', parar);
 document.querySelector('#botPausar').addEventListener('click', pausar);
-document.querySelector('#botGenera').addEventListener('click', creaPelotasRandom);
+document.querySelector('#botGenera').addEventListener('click', cargaVars);
 
+muestraDistrs('normalDiv', generaDistrNorm);
 creaPelotasRandom();
-
-function cosaNormal(lam, m){
-    creaPelotas(Math.max(0, Math.round(generaDistrNorm(m, lam))));
-}
-
-function cosaPoisson(lam){
-    creaPelotas(Math.max(0, Math.round(generaDistrPoisson(lam))));
-}
-
-function muSi(id) {
-  var element = document.getElementById(id);
-  element.style.visibility = "visible";
-}
-
-function muNo(id) {
-  var element = document.getElementById(id);
-  element.style.visibility = "hidden";
-}

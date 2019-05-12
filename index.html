@@ -22,13 +22,16 @@
             </div-->
 
             <div id="normalDiv" class="dist">
-                    <label>Lambda</label>
-                    <input id="lamda" type="number" min="0" max="100" value="0.8" step="0.1">
-                    <br><br>
-                    <div id="muss" style="visibility: visible;">
-                      <label>Mu</label>
-                      <input id="mu" type="number" min="1" max="1000" value="300" step="1">
-                    </div>
+                <label>Mu</label>
+                <input id="mu" type="number" min="1" max="1000" value="10" step="1">
+                <br>
+                <label>Lambda</label>
+                <input id="inNormLambda" type="number" min="0" max="100" value="0.001" step="0.001">
+            </div>
+
+            <div id="poissonDiv" class="dist">
+                <label>Lambada</label>
+                <input id="inPoissLambda" type="number" min="0" max="100" value="7" step="0.001">
             </div>
 
             <div class="controles">
@@ -38,10 +41,8 @@
                     <button id="botPausar" class="boton">Pausar</button>
                     <button id="botParar" class="boton">Parar</button>
                     <br>
-                    <button id="botNormal" class="boton" onclick="muSi('muss');">Normal</button>
-                    <button id="botGoNormal" class="boton" onclick="cosaNormal('lamda', 'mu');">Ir</button>
-                    <button id="botPoisson" class="boton" onclick="muNo('muss');">Poisson</button>
-                    <button id="botGoPoisson" class="boton" onclick="cosaPoisson('mu');">Ir</button>
+                    <button id="botNormal" class="boton" onclick="muestraDistrs('normalDiv', generaDistrNorm);">Normal</button>
+                    <button id="botPoisson" class="boton" onclick="muestraDistrs('poissonDiv', generaDistrPoisson);">Poisson</button>
                 </span>
             </div>
 
