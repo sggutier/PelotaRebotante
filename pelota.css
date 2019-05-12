@@ -22,6 +22,18 @@ body{
     font-family: Helvetica;
 }
 
+.dist {
+    color: #DDDC1C;
+    text-align: center;
+    float: right;
+    /*clear: right;*/
+    padding: 10px;
+    border: 20px solid #F68A1E;
+    border-radius: 10px;
+    background-color: #213E57;
+    font-family: Helvetica;
+}
+
 .boton{
   padding: 5px;
   background-color: #1883ba;

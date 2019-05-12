@@ -10,13 +10,44 @@
         <header>
         </header>
         <main>
+          <!--div class="dist">
+              <span>
+                  <label>Distribución</label>
+                    <select class="boton" name="opciones">
+                      <option value="normal">Normal</option>
+                      <option value="poisson">Poisson</option>
+                    </select>
+                    <button id="botDist" class="boton">Ir</button>
+                </span>
+            </div-->
+
+            <div id="normalDiv" class="dist">
+                <label>Mu</label>
+                <input id="mu" type="number" min="1" max="1000" value="10" step="1">
+                <br>
+                <label>Lambda</label>
+                <input id="inNormLambda" type="number" min="0" max="100" value="0.001" step="0.001">
+            </div>
+
+            <div id="poissonDiv" class="dist">
+                <label>Lambada</label>
+                <input id="inPoissLambda" type="number" min="0" max="100" value="7" step="0.001">
+            </div>
+
             <div class="controles">
                 <span>
+                    <button id="botGenera" class="boton">Genera pelotas</button>
                     <button id="botIniciar" class="boton">(Re)Iniciar</button>
                     <button id="botPausar" class="boton">Pausar</button>
                     <button id="botParar" class="boton">Parar</button>
+                    <br>
+                    <button id="botNormal" class="boton" onclick="muestraDistrs('normalDiv', generaDistrNorm);">Normal</button>
+                    <button id="botPoisson" class="boton" onclick="muestraDistrs('poissonDiv', generaDistrPoisson);">Poisson</button>
                 </span>
             </div>
+
+
+
         </main>
         <footer>
         </footer>
